@@ -1,3 +1,222 @@
-<h1>
-    Welcome, {{name}}<br> You are age {{age}} years old <br> You are {{nationality}}
-</h1>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Tony Su personal website</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'dist/assets/img/favicon.icon' %}"/>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'dist/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Tony Su</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'dist/assets/img/tony.jpg' %}" alt="..." /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#extracurricular">Extracurricular</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section" id="about">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        Tony
+                        <span class="text-primary">Su</span>
+                    </h1>
+                    <div class="subheading mb-5">
+                        Taipei City · Taiwan · (886) 928816518 ·
+                        <a href="mailto:tonysu.cs07@nctu.edu.tw">tonysu.cs07@nctu.edu.tw</a>
+                    </div>
+                    <p class="lead mb-5">Tony Su is studying in National Chiao Tung University for bachelor degree of Computer Science and minoring in Finance Technology. As a Vice President of NCTU International Student Association, he has lots of experience to cooperate with people from all over the world. Besides, He is an undergraduate research assistant in NCTU Fintech AI Laboratory, which focuses on Question-based recommendation system with deep learning and reinforcement learning.</p>
+                    <div class="social-icons">
+                        <a class="social-icon" href="https://www.linkedin.com/in/bo-yu-su-21385418a/"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon" href="https://github.com/SuBoYu?tab=repositories"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="https://twitter.com/tony11305"><i class="fab fa-twitter"></i></a>
+                        <a class="social-icon" href="https://www.facebook.com/profile.php?id=100000461235642"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Experience</h2>
+
+                    {% for exp in exps %}
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{exp.name}}</h3>
+                            <div class="subheading mb-3">{{exp.location}}</div>
+                            {% for detail in exp.details %}
+                            <p>{{detail}}
+                                <br>
+                            </p>
+                            {% endfor %}
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">{{exp.duration}}</span></div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Education-->
+            <section class="resume-section" id="education">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Education</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">National Chiao Tung University</h3>
+                            <div class="subheading mb-3">Bachelor of Science</div>
+                            <div>Major in Computer Science, Minor in Finance Technology</div>
+                            <p>GPA: 3.9/4.3</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Sep. 2018 – June. 2022</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">School42 Silicon Valley</h3>
+                            <div class="subheading mb-3">Short-term study program of Coding</div>
+                            <p>Cooperated with coders from all over the world and experienced the innovative engineering                                and programming education and paid a visit to prestigious tech companies such as, Facebook,                              Google, Apple and learned how to make an impact in daily life</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Aug. 2019 – Sep. 2019</span></div>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Skills-->
+            <section class="resume-section" id="skills">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Skills</h2>
+                    <div class="subheading mb-3">Programming Languages & Tools</div>
+                    <ul class="fa-ul mb-0">
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Python(ML: Pytorch, Web dev: Flask, Pandas, Numpy)
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            R(Statistic)
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            SQL(MySQL, SQLite)
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            C/C++
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            HTML/CSS
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            PHP
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Verilog
+                        </li>
+                    </ul>
+                    <div class="subheading mb-3">Language Skills</div>
+                    <ul class="fa-ul mb-0">
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            English: TOEFL 106 (R:30, L:29, S:22, W:25) GRE 326 AW: 3.5, TOEIC 855
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            German: Basic
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Extracurricular-->
+            <section class="resume-section" id="extracurricular">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Extracurricular</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Vice President</h3>
+                            <div class="subheading mb-3">International Student Association(ISA) of National Chiao Tung University</div>
+                            <p>• Leaded all departments of ISA and communicated with the college official in order to                                   create opportunities for international exchange between the locals and foreign students.
+                                <br>
+                                • Acquired a digital marketing skill by creating our first Instagram fanpage and arranging                               a promotional video with TalkBar.
+                                <br>
+                                • Learned how to execute a plan efficiently and effectively from the experiences of                                      holding welcome party, buddy program and cultural activities.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">July. 2020 – Present</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Cultural Ambassador</h3>
+                            <div class="subheading mb-3">International Student Association(ISA) of National Chiao Tung University</div>
+                            <p>• Promoted ISA’s activities to all students in NCTU and planned some authentic culture                                   events.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Sep. 2019 – June. 2020</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Event Planning member</h3>
+                            <div class="subheading mb-3">StarVoice Club of National Chiao Tung University</div>
+                            <p>• Held a musical festival in NCTU as a staff and organized a band performance as a drummer.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">Sep. 2019 – June. 2020</span></div>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Awards-->
+            <section class="resume-section" id="awards">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Awards & Certifications</h2>
+                    <ul class="fa-ul mb-0">
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            1
+                            <sup>st</sup>
+                            Place - National Chiao Tung University - English Resume and Interview Competition 2020
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            2
+                            <sup>st</sup>
+                            Place - Epoch School - Young Entrepreneur of the Future Startup competition
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'dist/js/scripts.js' %}" ></script>
+    </body>
+</html>
