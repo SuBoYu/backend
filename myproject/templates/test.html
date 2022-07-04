@@ -3,3 +3,8 @@
 <link rel="stylesheet" href="{% static 'style.css' %}">
 
 <h1>Hello my name is {{name}}. I am {{age}} years old and coming from {{nationality}}</h1>
+
+{% for feature in features %}
+    <h1>{{feature.name}} <br>
+    {{feature.details}}</h1>
+{% endfor %}
