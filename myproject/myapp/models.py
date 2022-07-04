@@ -8,3 +8,11 @@ class Experience:
     location: str
     details: list
     duration: str
+
+
+class Education:
+    id: int
+    school: str
+    degree: str
+    details: list
+    duration: str
