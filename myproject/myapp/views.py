@@ -74,9 +74,12 @@ def form(request):
 
 @csrf_exempt
 def counter(request):
-    words = request.POST['words']
-    amount_of_words = len(words.split())
-    return render(request, "counter.html", {"amount": amount_of_words})
+    # words = request.POST['words']
+    # amount_of_words = len(words.split())
+
+    posts = [1, 2, 3, 4, 5, "tim", "tom", "john"]
+    # return render(request, "counter.html", {"amount": amount_of_words})
+    return render(request, "counter.html", {"posts": posts})
 
 
 def register(request):
@@ -104,6 +107,7 @@ def register(request):
         return render(request, "register.html")
 
 
+@csrf_exempt
 def login(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -113,9 +117,18 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect("/")
+            return redirect("test")
         else:
             messages.info(request, "Credentials Invalid")
             return redirect("login")
     else:
         return render(request, "login.html")
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("test")
+
+
+def post(request, pk):
+    return render(request, "post.html", {"pk": pk})

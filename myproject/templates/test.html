@@ -8,3 +8,18 @@
     <h1>{{feature.name}} <br>
     {{feature.details}}</h1>
 {% endfor %}
+
+{% if user.is_authenticated %}
+<h1>Welcome, {{user.username}}</h1>
+{% else %}
+{% endif %}
+
+{% if user.is_authenticated %}
+<form method="POST" action="logout">
+    <button type="submit">Logout</button>
+</form>
+{% else %}
+<form method="GET" action="login">
+    <button type="submit">Login</button>
+</form>
+{% endif %}
